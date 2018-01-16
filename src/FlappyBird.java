@@ -6,15 +6,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.Random;
 
 import javax.swing.JFrame;
 import javax.swing.Timer;
 
-public class FlappyBird implements ActionListener, MouseListener, KeyListener
+public class FlappyBird implements ActionListener, KeyListener
 {
 
     public static FlappyBird flappyBird;
@@ -45,7 +43,6 @@ public class FlappyBird implements ActionListener, MouseListener, KeyListener
         jframe.setTitle("Flappy Bird");
         jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         jframe.setSize(WIDTH, HEIGHT);
-        jframe.addMouseListener(this);
         jframe.addKeyListener(this);
         jframe.setResizable(false);
         jframe.setVisible(true);
@@ -224,7 +221,7 @@ public class FlappyBird implements ActionListener, MouseListener, KeyListener
 
         if (!started)
         {
-            g.drawString("Click to start!", 75, HEIGHT / 2 - 50);
+            g.drawString("Press to start!", 75, HEIGHT / 2 - 50);
         }
 
         if (gameOver)
@@ -236,16 +233,6 @@ public class FlappyBird implements ActionListener, MouseListener, KeyListener
         {
             g.drawString(String.valueOf(score), WIDTH / 2 - 25, 100);
         }
-
-        if (score>=5 && 10>score)
-        {
-            g.drawString("Beginner!", 100, HEIGHT / 2 - 50);
-        }
-        if(score>=10 && 15>score)
-        {
-            g.drawString("Try Hard!", 100, HEIGHT / 2 - 50);
-        }
-
     }
 
     public static void main(String[] args)
@@ -253,11 +240,6 @@ public class FlappyBird implements ActionListener, MouseListener, KeyListener
         flappyBird = new FlappyBird();
     }
 
-    @Override
-    public void mouseClicked(MouseEvent e)
-    {
-        jump();
-    }
 
     @Override
     public void keyReleased(KeyEvent e)
@@ -266,26 +248,6 @@ public class FlappyBird implements ActionListener, MouseListener, KeyListener
         {
             jump();
         }
-    }
-
-    @Override
-    public void mousePressed(MouseEvent e)
-    {
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent e)
-    {
-    }
-
-    @Override
-    public void mouseEntered(MouseEvent e)
-    {
-    }
-
-    @Override
-    public void mouseExited(MouseEvent e)
-    {
     }
 
     @Override
